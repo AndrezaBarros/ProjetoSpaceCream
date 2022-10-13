@@ -9,6 +9,9 @@
 
     --fontfam-titulos: 'Staatliches', sans-serif;
     --fontfam-paragrafo: 'Palanquin', cursive;
+
+    --fontsize-tit1: clamp(4rem, 1rem + 3vw, 4.8rem);
+    --fontsize-p: clamp(1.7rem, 0.5rem + 1vw, 2.4rem)
 }
 
 body{
@@ -16,7 +19,8 @@ body{
 }
 
 .page{
-    max-width: 500px;
+    max-width: 700px;
+    height: 100vh;
 
     margin: 0 auto;
 }
@@ -39,7 +43,7 @@ header img{
 
 header h1{
     font-family: var(--fontfam-titulos);
-    font-size: 4rem;
+    font-size: var(--fontsize-tit1);
     line-height: 3.4rem;
     letter-spacing: 0.05em;
     color: #ffffff;
@@ -49,7 +53,7 @@ header h1{
     width: 100%;
     text-align: center;
     padding: 9px 0;
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 
 
@@ -60,7 +64,7 @@ main{
 
 main p{
     font-family: var(--fontfam-paragrafo);
-    font-size: 2rem;
+    font-size: var(--fontsize-p);
     font-weight: 400;
     line-height: 2.5rem;
     text-align: center;
@@ -70,17 +74,20 @@ main p{
 }
 
 main section{
-    display: grid;
-    gap: 3.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.5rem, 2.5rem + 2vw, 3.2rem);
 }
 
 .card{
     position: relative;
+    max-width: clamp(20rem, 30rem + 2vw, 36rem);
 }
 
 .card h2{
     font-family: var(--fontfam-titulos);
-    font-size: 2rem;
+    font-size: var(--fontsize-p);
     line-height: 3.4rem;
     letter-spacing: 0.05em;
     color: #4A4E69;
@@ -99,8 +106,8 @@ main section{
 }
 
 .card img{
-    width: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    height: 100%;
 
     transition: transform 250ms;
     animation: downTop 500ms 350ms backwards;
@@ -144,3 +151,256 @@ main section{
     }
 }
 
+section div:nth-child(3), section div:nth-child(4), footer{
+    display: none;
+}
+
+
+/*Medias Query*/
+
+
+@media (min-width: 550px) {
+    main section{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        "A B"
+        "C B"
+        "C D";
+        gap: 3.2rem;
+    }
+
+    section div:nth-child(1){
+        grid-area: A;
+    }
+    section div:nth-child(2){
+        grid-area: B;
+    }
+    section div:nth-child(5){
+        grid-area: D;
+    }
+    section div:nth-child(6){
+        grid-area: C;
+        order: 3;
+    }
+
+    .card img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 999px){
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto&display=swap');
+
+    main p, header img, section h2{
+        display: none;
+    }
+
+    main{
+        background-color: #ffffff;
+
+        margin: 0;
+        padding: 0;
+    }
+
+    .page{
+        max-width: 100%;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1.1fr 3fr;
+    }
+
+    header{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 3.6rem;
+        padding: 32px 0;
+        justify-content: flex-start;
+    }
+
+    header::before{
+        content: url(./imagens/logo\ 3.png);
+    }
+
+    header h1{
+        margin: 0;
+        padding: 21px;
+    }
+
+    header::after{
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a rhoncus leo. Donec at scelerisque magna. Nullam vitae neque sit amet erat dignissim cursus ac ac lectus. Aliquam erat volutpat. Praesent at quam aliquet, pharetra est in, sagittis lorem.elit. Donec a rhoncus leo. Donec at scelerisque magna. Nullam vitae neque sit amet erat dignissim cursus ac ac lectus. Aliquam erat volutpat. Praesent at quam aliquet, pharetra est in, sagittis lorem. ';
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        line-height: 2.4rem;
+        text-align: center;
+        color: #ffffff;
+
+        padding: clamp(0.3rem, 1rem + 1vw, 5rem);
+    }
+
+    main section{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "A B"
+            "C B"
+            "C D"
+            "E F";
+
+        padding: 3.4rem 3.4rem 3rem;;
+        gap: clamp(1.5rem, 2.5rem + 2vw, 3.2rem);
+    }
+
+
+    section div:nth-child(1){
+        grid-area: A;
+    }
+    section div:nth-child(2){
+        grid-area: B;
+    }
+    section div:nth-child(3){
+        display: block;
+        grid-area: D;
+    }
+    section div:nth-child(4){
+        display: block;
+        grid-area: C;
+    }
+    section div:nth-child(5){
+        height: 100%;
+        object-fit: contain;
+        grid-area: E;
+    }
+    section div:nth-child(6){
+        grid-area: F;
+    }
+
+    .card img{
+        max-width: 26rem;
+    }
+
+    footer{
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 3rem 0;
+
+        font-family: 'Open Sans',sans-serif;
+        font-size: 1.4rem;
+        color: #4A4E69;
+    }
+
+    footer a{
+        font-family: 'Open Sans',sans-serif;
+        font-weight: bold;
+        font-size: 1.4rem;
+        color: #4A4E69;
+        text-decoration: none;
+    }
+}
+
+@media (min-width: 1000px) {
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto&display=swap');
+
+    main p, header img, section h2{
+        display: none;
+    }
+
+    main{
+        background-color: #ffffff;
+
+        padding: 0;
+        margin: 0;
+    }
+
+    .page{
+        max-width: 100%;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1.1fr 3fr;
+    }
+
+    header{
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 3.6rem;
+        padding: 32px 0;
+        justify-content: flex-start;
+    }
+
+    header::before{
+        content: url(./imagens/logo\ 3.png);
+    }
+
+    header h1{
+        margin: 0;
+        padding: 21px;
+    }
+
+    header::after{
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a rhoncus leo. Donec at scelerisque magna. Nullam vitae neque sit amet erat dignissim cursus ac ac lectus. Aliquam erat volutpat. Praesent at quam aliquet, pharetra est in, sagittis lorem.elit. Donec a rhoncus leo. Donec at scelerisque magna. Nullam vitae neque sit amet erat dignissim cursus ac ac lectus. Aliquam erat volutpat. Praesent at quam aliquet, pharetra est in, sagittis lorem. ';
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        line-height: 2.4rem;
+        text-align: center;
+        color: #ffffff;
+
+        padding: 0 5rem;
+    }
+
+    main section{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: 
+        "A B C"
+        "D B E"
+        "D F E";
+
+        padding: 6.4rem 6.4rem 5rem;
+        height: 93vh;
+    }
+
+    section div:nth-child(1){
+        grid-area: A;
+    }
+    section div:nth-child(2){
+        grid-area: B;
+    }
+    section div:nth-child(3){
+        display: block;
+        grid-area: C;
+    }
+    section div:nth-child(4){
+        display: block;
+        grid-area: D;
+    }
+    section div:nth-child(5){
+        grid-area: F;
+    }
+    section div:nth-child(6){
+        grid-area: E;
+    }
+
+    footer{
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-bottom: 3rem;
+
+        font-family: 'Open Sans',sans-serif;
+        font-size: 1.4rem;
+        color: #4A4E69;
+    }
+
+    footer a{
+        font-family: 'Open Sans',sans-serif;
+        font-weight: bold;
+        font-size: 1.4rem;
+        color: #4A4E69;
+        text-decoration: none;
+    }
+}
