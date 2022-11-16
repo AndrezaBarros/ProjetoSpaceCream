@@ -1,6 +1,6 @@
 # Space Cream
 
-<img width="321" alt="image" src="https://user-images.githubusercontent.com/107008175/194973592-29463d8f-10f6-4c31-8513-cfaae83a270f.png">
+<img width="321" alt="image" src="https://i.imgur.com/fXJ1dsC.png">
 
 >Bootcamp Explorer
 
