@@ -6,7 +6,7 @@
 
 Fixation exercise about responsivity, using concept of mobile first.
 
-Topics coveredo on project:
+Topics covered on project:
   * Variables on CSS
   * Flexible measures
   * Simple transition
